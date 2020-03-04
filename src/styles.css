@@ -1,0 +1,131 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+h1 {
+  text-transform: capitalize;
+}
+ol li {
+  margin: 10px;
+  font-size: 1.4rem;
+}
+.wrapper {
+  padding: 30;
+  height: "100%";
+  display: "grid";
+  align-items: "center";
+  justify-content: "center";
+}
+.switch,
+.switch-label,
+.switch-slider {
+  cursor: pointer;
+  width: 60px;
+  height: 27px;
+}
+.switch {
+  position: relative;
+  display: block;
+  margin: 10px auto;
+}
+.switch-check {
+  position: absolute;
+  opacity: 0;
+}
+.switch-label,
+.switch-slider {
+  position: absolute;
+  top: 0;
+}
+.switch-label {
+  left: 0;
+  text-indent: -9999px;
+}
+.switch-slider {
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) inset,
+    0 0 4px rgba(0, 0, 0, 0.5) inset, 0 5px 4px 1px rgba(0, 0, 0, 0.3) inset,
+    0 27px 0 rgba(0, 0, 0, 0.07) inset;
+  -webkit-transition: width 0.2s linear;
+  -moz-transition: width 0.2s linear;
+  -o-transition: width 0.2s linear;
+  transition: width 0.2s linear;
+}
+.switch-slider-on {
+  left: 0;
+  width: 27px;
+  background: #c8ea14
+    url(https://vitaminvp.github.io/WebAcademy-HomeWork/client/docs/assets/images/on.svg)
+    185% 5px no-repeat;
+}
+.switch-slider-off {
+  right: 0;
+  background: #fff
+    url(https://vitaminvp.github.io/WebAcademy-HomeWork/client/docs/assets/images/off.svg)
+    33px 5px no-repeat;
+}
+.switch-slider-off:after {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  background: -webkit-linear-gradient(#d0d0d0, #fdfdfd);
+  background: -moz-linear-gradient(#d0d0d0, #fdfdfd);
+  background: -o-linear-gradient(#d0d0d0, #fdfdfd);
+  background: linear-gradient(#d0d0d0, #fdfdfd);
+  box-shadow: 0 0 2px 2px #fff inset, 0 0 4px 1px rgba(0, 0, 0, 0.6);
+  content: "";
+}
+.switch-label:active .switch-slider-off:after,
+.switch-check:focus + .switch-label .switch-slider-off:after {
+  background: #d5d5d5;
+  background: -webkit-linear-gradient(#c8c8c8, #e4e4e4);
+  background: -moz-linear-gradient(#c8c8c8, #e4e4e4);
+  background: -o-linear-gradient(#c8c8c8, #e4e4e4);
+  background: linear-gradient(#c8c8c8, #e4e4e4);
+}
+.switch-check:checked + .switch-label .switch-slider-on {
+  width: 60px;
+}
+.switch-check:checked + .switch-label .switch-slider-off {
+  width: 27px;
+}
+.select_div_css {
+  margin-left: 20px;
+  display: block;
+  position: relative;
+  float: left;
+}
+.toggle-button {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  background-color: #ededed;
+  border-radius: 15px;
+  border: 1px solid #dcdcdc;
+  display: block;
+  cursor: pointer;
+  color: #777777;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  margin: 20px auto;
+}
+.toggle-button:hover {
+  background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  background-color: #dfdfdf;
+}
+.toggle-button:active {
+  position: relative;
+  top: 1px;
+}
