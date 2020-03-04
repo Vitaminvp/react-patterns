@@ -15,11 +15,11 @@ ol li {
   font-size: 1.4rem;
 }
 .wrapper {
-  padding: 30;
-  height: "100%";
-  display: "grid";
-  align-items: "center";
-  justify-content: "center";
+  padding: 30px;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 .switch,
 .switch-label,
@@ -123,9 +123,12 @@ ol li {
 }
 .toggle-button:hover {
   background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-  background-color: #dfdfdf;
 }
 .toggle-button:active {
   position: relative;
   top: 1px;
+}
+.click-count {
+  text-align: center;
+  font-style: italic;
 }

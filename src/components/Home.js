@@ -13,9 +13,7 @@ function Home() {
               <Link
                 to={{
                   pathname: `/${name}`,
-                  state: {
-                    title: { title }
-                  }
+                  state: { title }
                 }}
               >
                 {title}

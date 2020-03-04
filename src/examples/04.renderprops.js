@@ -5,31 +5,23 @@ import Switch from "../components/Switch";
 const Toggle = ({ children, title = "" }) => {
   const [on, setOn] = useState(false);
   const toggle = () => setOn(!on);
-  const getPropsColection = () => ({
-    on,
-    title,
-    propsCollection: {
-      onClick: toggle,
-      "area-pressed": on
-    }
-  });
-  return children(getPropsColection());
+  return children({ on, toggle, title });
 };
 
 const Parent = props => {
   return (
     <Toggle {...props}>
-      {({ on, title, propsCollection }) => (
+      {({ on, toggle, title }) => (
         <Fragment>
           <h1>
             <Link to="/">{title}</Link>
           </h1>
           <h2>{on ? "The button is on" : "The button is off"}</h2>
-          <Switch on={on} {...propsCollection} />
+          <Switch on={on} onClick={toggle} />
           <button
             aria-label="custom-button"
+            onClick={toggle}
             className="toggle-button"
-            {...propsCollection}
           >
             {on ? "on" : "off"}
           </button>

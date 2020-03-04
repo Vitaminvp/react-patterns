@@ -1,12 +1,13 @@
 export const patterns = [
-  { name: "default", title: "Default component" },
-  { name: "compound", title: "Compound components" },
-  { name: "context", title: "React context" },
-  { name: "renderprops", title: "Render Props" },
-  { name: "propscollection", title: "Props Collections" },
-  { name: "propsgetter", title: "Prop Getters" },
-  { name: "stateinitializers", title: "State Initializers" },
-  { name: "statereducers", title: "State Reducers" },
-  { name: "providerpattern", title: "Provider Pattern" },
-  { name: "hoc", title: "Higher Order Components" }
+  { name: "01.default.js", title: "Default component" },
+  { name: "02.compound", title: "Compound components" },
+  { name: "03.context.js", title: "React context" },
+  { name: "04.renderprops", title: "Render Props" },
+  { name: "05.propscollection", title: "Props Collections" },
+  { name: "06.propsgetter", title: "Prop Getters" },
+  { name: "07.stateinitializers", title: "State Initializers" },
+  { name: "08.statereducers", title: "State Reducers" },
+  { name: "09.providerpattern", title: "Provider Pattern" },
+  { name: "10.controlprops", title: "Control Props" },
+  { name: "11.hoc", title: "Higher Order Components" }
 ];

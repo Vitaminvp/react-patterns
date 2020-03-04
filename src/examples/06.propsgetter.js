@@ -5,28 +5,42 @@ import Switch from "../components/Switch";
 const Toggle = ({ children, title = "" }) => {
   const [on, setOn] = useState(false);
   const toggle = () => setOn(!on);
-  return children({ on, toggle, title });
+
+  const propsGetter = ({ onClick, ...props }) => ({
+    onClick: (...args) => {
+      onClick && onClick(...args);
+      toggle();
+    },
+    ...props
+  });
+  const getPropsCollection = () => ({
+    on,
+    title,
+    propsGetter
+  });
+  return children(getPropsCollection());
 };
 
 const Parent = props => {
+  const customClick = () => console.log("🏴‍☠️🏁🇺🇳");
   return (
     <Toggle {...props}>
-      {({ on, toggle, title }) => (
+      {({ on, title, propsGetter }) => (
         <Fragment>
           <h1>
             <Link to="/">{title}</Link>
           </h1>
           <h2>{on ? "The button is on" : "The button is off"}</h2>
-          <Switch on={on} onClick={toggle} />
+          <Switch {...propsGetter({ on })} />
           <button
             aria-label="custom-button"
-            onClick={toggle}
             className="toggle-button"
+            {...propsGetter({
+              onClick: customClick,
+              "area-pressed": `${on}`
+            })}
           >
             {on ? "on" : "off"}
-          </button>
-          <button className="toggle-button" onClick={() => reset()}>
-            Reset
           </button>
         </Fragment>
       )}
