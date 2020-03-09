@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useMemo, useContext } from "react";
 import { Link } from "react-router-dom";
 import Switch from "../components/Switch";
 
@@ -7,64 +7,62 @@ const ToggleContext = React.createContext(null);
 const Toggle = ({ title = "", children }) => {
   const [on, setOn] = useState(false);
   const toggle = () => setOn(!on);
+  const contextValues = useMemo(() => ({ on, title }), [on, title]);
   return (
-    <ToggleContext.Provider value={{ on, toggle, title }}>
+    <ToggleContext.Provider value={{...contextValues, toggle}}>
       {children}
     </ToggleContext.Provider>
   );
 };
-Toggle.Title = () => (
-  <ToggleContext.Consumer>
-    {({ title }) =>
-      title ? (
-        <h1>
-          <Link to="/">{title}</Link>
-        </h1>
-      ) : null
-    }
-  </ToggleContext.Consumer>
-);
 
-Toggle.On = ({ children }) => (
-  <ToggleContext.Consumer>
-    {({ on }) => (on ? <h2>{children}</h2> : null)}
-  </ToggleContext.Consumer>
-);
-Toggle.Off = ({ children }) => (
-  <ToggleContext.Consumer>
-    {({ on }) => (on ? null : <h2>{children}</h2>)}
-  </ToggleContext.Consumer>
-);
-Toggle.Button = () => (
-  <ToggleContext.Consumer>
-    {({ on, toggle }) => (
-      <button
-        aria-label="custom-button"
-        onClick={toggle}
-        className="toggle-button"
-      >
-        {on ? "on" : "off"}
-      </button>
-    )}
-  </ToggleContext.Consumer>
-);
-Toggle.Switch = () => (
-  <ToggleContext.Consumer>
-    {({ on, toggle }) => <Switch on={on} onClick={toggle} />}
-  </ToggleContext.Consumer>
-);
+const ToggleTitle = () => {
+  const { title } = useContext(ToggleContext);
+  return title ? (
+    <h1>
+      <Link to="/">{title}</Link>
+    </h1>
+  ) : null;
+};
+
+const ToggleOn = ({ children }) => {
+  const { on } = useContext(ToggleContext);
+  return on ? <h2>{children}</h2> : null;
+};
+
+const ToggleOff = ({ children }) => {
+  const { on } = useContext(ToggleContext);
+  return on ? null : <h2>{children}</h2>;
+};
+
+const ToggleButton = () => {
+  const { on, toggle } = useContext(ToggleContext);
+  return (
+    <button
+      aria-label="custom-button"
+      onClick={toggle}
+      className="toggle-button"
+    >
+      {on ? "on" : "off"}
+    </button>
+  );
+};
+
+const ToggleSwitch = () => {
+  const { on, toggle } = useContext(ToggleContext);
+  return <Switch on={on} onClick={toggle} />;
+};
 
 const Parent = props => {
   return (
     <Toggle {...props}>
       <Fragment>
-        <Toggle.Title />
+        <ToggleTitle />
       </Fragment>
-      <Toggle.On>The button is on</Toggle.On>
-      <Toggle.Off>The button is off</Toggle.Off>
+      <ToggleOn>The button is on</ToggleOn>
+      <ToggleOff>The button is off</ToggleOff>
       <div>
-        <Toggle.Switch />
-        <Toggle.Button />
+        <ToggleSwitch />
+        <ToggleButton />
       </div>
     </Toggle>
   );
