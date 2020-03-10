@@ -2,30 +2,44 @@ import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Switch from "../components/Switch";
 
-const Toggle = ({ children, title = "", initialOn, onReset, onToggle }) => {
-  const [on, setOn] = useState(initialOn);
-  const toggle = () => {
-    onToggle(!on);
-    setOn(!on);
+const TYPES = {
+  reset: "reset",
+  toggle: "toggle",
+  force: "force"
+};
+
+const Toggle = ({
+  children,
+  title = "",
+  initialState,
+  onReset,
+  onToggle,
+  stateReducer
+}) => {
+  const [{ on }, setState] = useState(initialState);
+  const toggle = ({ type = TYPES.toggle }) => {
+    internalSetState({ type, on: !on });
+    onToggle();
   };
 
-  const reset = () => {
-    setOn(initialOn);
-    onReset(initialOn);
+  const reset = (...args) => {
+    setState(initialState);
+    onReset(...args);
   };
 
-  const getPropsCollection = () => ({
+  const internalSetState = changes =>
+    setState(state => stateReducer(state, changes));
+
+  return children({
     on,
     title,
     reset,
     toggle
   });
-
-  return children(getPropsCollection());
 };
 
 Toggle.defaultProps = {
-  initialOn: false,
+  initialState: { on: false },
   onReset: () => {}
 };
 
@@ -33,6 +47,7 @@ const Parent = props => {
   const initialState = 0;
   const [timesClicked, setTimesClicked] = useState(initialState);
   const initialOn = true;
+
   const onToggle = (...args) => {
     setTimesClicked(timesClicked => ++timesClicked);
     console.log(...args);
@@ -44,10 +59,13 @@ const Parent = props => {
   };
 
   const stateReducer = (state, changes) => {
-    if (timesClicked >= 4) {
-      return {...changes, on: false}
+    if (changes.type === TYPES.force) {
+      return changes;
     }
-    return changes
+    if (timesClicked >= 4) {
+      return { ...changes, on: false };
+    }
+    return changes;
   };
 
   return (
@@ -65,13 +83,23 @@ const Parent = props => {
           </h1>
           <h2>{on ? "The button is on" : "The button is off"}</h2>
           <Switch on={on} onClick={toggle} />
-          {timesClicked > 4 ? (
-            <div className="click-count">You clicked to match!</div>
-          ) : timesClicked > 0 ? (
+
+          {timesClicked > 5 ? (
+            <Fragment>
+              <div className="click-count">You clicked to match!</div>
+              <button
+                className="toggle-button"
+                onClick={() => toggle({ type: TYPES.force })}
+              >
+                Force Toggle
+              </button>
+            </Fragment>
+          ) : (
             <div className="click-count">
               Click count: <strong>{timesClicked}</strong>
             </div>
-          ) : null}
+          )}
+
           <button className="toggle-button" onClick={reset}>
             Reset
           </button>

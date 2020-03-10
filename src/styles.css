@@ -132,3 +132,7 @@ ol li {
   text-align: center;
   font-style: italic;
 }
+
+.yellow-border {
+    border: 4px solid yellow;
+}
