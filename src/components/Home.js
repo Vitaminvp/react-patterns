@@ -23,12 +23,12 @@ function Home() {
   );
 
   return (
-    <div>
+    <Fragment>
       <h1>React Patterns</h1>
       {orderedList(patterns)}
       <h2>Bonuses</h2>
       {orderedList(bonuses)}
-    </div>
+    </Fragment>
   );
 }
 

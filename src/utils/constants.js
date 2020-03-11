@@ -7,8 +7,8 @@ export const patterns = [
   { name: "06.propsGetter", title: "Prop Getters" },
   { name: "07.stateInitializers", title: "State Initializers" },
   { name: "08.stateReducers", title: "State Reducers" },
-  { name: "09.providerPattern", title: "Provider Pattern" },
-  { name: "10.controlProps", title: "Control Props" },
+  { name: "09.controlProps", title: "Control Props" },
+  { name: "10.providerPattern", title: "Provider Pattern" },
   { name: "11.hoc", title: "Higher Order Components" }
 ];
 

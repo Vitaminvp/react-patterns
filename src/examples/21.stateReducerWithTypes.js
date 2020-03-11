@@ -10,7 +10,7 @@ const TYPES = {
 
 const Toggle = ({
   children,
-  title = "",
+  title,
   initialState,
   onReset,
   onToggle,
@@ -23,7 +23,7 @@ const Toggle = ({
   };
 
   const reset = (...args) => {
-    setState(initialState);
+    internalSetState(initialState);
     onReset(...args);
   };
 
@@ -40,7 +40,10 @@ const Toggle = ({
 
 Toggle.defaultProps = {
   initialState: { on: false },
-  onReset: () => {}
+  onReset: () => {},
+  title: "",
+  onToggle: () => {},
+  stateReducer: (state, changes) => changes,
 };
 
 const Parent = props => {

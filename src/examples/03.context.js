@@ -1,4 +1,10 @@
-import React, { useState, Fragment, useMemo, useContext } from "react";
+import React, {
+  useState,
+  Fragment,
+  useMemo,
+  useContext,
+  useCallback
+} from "react";
 import { Link } from "react-router-dom";
 import Switch from "../components/Switch";
 
@@ -6,10 +12,14 @@ const ToggleContext = React.createContext(null);
 
 const Toggle = ({ title = "", children }) => {
   const [on, setOn] = useState(false);
-  const toggle = () => setOn(!on);
-  const contextValues = useMemo(() => ({ on, title }), [on, title]);
+  const toggle = useCallback(() => setOn(on => !on), [setOn]);
+  const contextValues = useMemo(() => ({ on, title, toggle }), [
+    on,
+    title,
+    toggle
+  ]);
   return (
-    <ToggleContext.Provider value={{...contextValues, toggle}}>
+    <ToggleContext.Provider value={{ ...contextValues, toggle }}>
       {children}
     </ToggleContext.Provider>
   );
