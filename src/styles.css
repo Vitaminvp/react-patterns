@@ -105,20 +105,20 @@ ol li {
   float: left;
 }
 .toggle-button {
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  box-shadow: inset 0 1px 0 0 #ffffff;
   background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-  background-color: #ededed;
+  background: #ededed;
   border-radius: 15px;
   border: 1px solid #dcdcdc;
   display: block;
   cursor: pointer;
   color: #777777;
-  font-family: Arial;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
+  text-shadow: 0 1px 0 #ffffff;
   margin: 20px auto;
 }
 .toggle-button:hover {
@@ -134,5 +134,98 @@ ol li {
 }
 
 .yellow-border {
-    border: 4px solid yellow;
+  border: 4px solid yellow;
+}
+
+.form {
+  max-width: 550px;
+  background: #fafafa;
+  padding: 30px;
+  margin: 50px auto;
+  box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  border: 6px solid #305a72;
+}
+.form .container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font: 12px Arial, Helvetica, sans-serif;
+  min-width: 360px;
+}
+.form .container .group {
+  display: block;
+  margin-bottom: 10px;
+  min-height: 35px;
+}
+.form .container .group .field-style {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 8px;
+  outline: none;
+  border: 1px solid #b0cfe0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+.form .container .group .field-style:focus {
+  box-shadow: 0 0 5px #b0cfe0;
+  border: 1px solid #b0cfe0;
+}
+.form .container .group label {
+  margin-right: 7px;
+}
+.form .container .group .field-split {
+  width: 49%;
+}
+.form .container .group .field-full {
+  width: 100%;
+}
+.form .container .group input.align-left {
+  float: left;
+}
+.form .container .group input.align-right {
+  float: right;
+}
+.form .container .group textarea {
+  width: 100%;
+  height: 100px;
+}
+.form .container .group button[type="button"],
+.form .container .group button[type="submit"] {
+  -moz-box-shadow: inset 0 1px 0 0 #3985b1;
+  -webkit-box-shadow: inset 0 1px 0 0 #3985b1;
+  box-shadow: inset 0 1px 0 0 #3985b1;
+  background-color: #216288;
+  border: 1px solid #17445e;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 8px 18px;
+  text-decoration: none;
+  font: 12px Arial, Helvetica, sans-serif;
+}
+.form .container .group button[type="button"]:hover,
+.form .container .group button[type="submit"]:hover {
+  background: linear-gradient(to bottom, #2d77a2 5%, #337da8 100%);
+  background: #28739e;
+}
+
+button:disabled,
+button[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.form .container .group button[disabled],
+.form .container .group button[disabled]:hover {
+    -moz-box-shadow: inset 0 1px 0 0 #a9b1af;
+    -webkit-box-shadow: inset 0 1px 0 0 #a1a7b1;
+    box-shadow: inset 0 1px 0 0 #aba4b1;
+    background-color: #4d5050;
+    border: 1px solid #444647;
+  background: linear-gradient(to bottom, #9ea0a2 5%, #a095a8 100%);
+  background: #9b9e8e;
 }

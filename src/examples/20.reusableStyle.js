@@ -22,7 +22,7 @@ Toggle.On = ({ on, children, style: userStyle = {} }) =>
 Toggle.Off = ({ on, children, style: userStyle = {} }) =>
   on ? null : <h2 style={userStyle}>{children}</h2>;
 
-Toggle.Button = ({ on, toggle, className }) => {
+Toggle.Button = ({ on, toggle, className = "" }) => {
   const classNames = [className, "toggle-button"].join(" ").trim();
   return (
     <button aria-label="custom-button" onClick={toggle} className={classNames}>

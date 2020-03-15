@@ -15,5 +15,7 @@ export const patterns = [
 export const bonuses = [
   { name: "20.reusableStyle.js", title: "Reusable Styles" },
   { name: "21.stateReducerWithTypes.js", title: "State Reducers (with change types)" },
-
+  { name: "22.proxyComponent.js", title: "Proxy component" },
+  { name: "23.controlledComponents.js", title: "Controlled Components (submit form)" },
+  { name: "24.uncontrolledComponents.js", title: "Uncontrolled Components (submit form)" },
 ];
