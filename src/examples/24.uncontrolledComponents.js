@@ -123,17 +123,18 @@ const Parent = () => {
   const handleReset = () => formRef.current.reset();
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(Array.from(formRef.current.elements).map((item) => `${item.name}: ${item.value}`));
+    console.log(
+      Array.from(formRef.current.elements)
+        .map(({ name, value, checked }) => {
+          if (name === "agreement" || name === "gender")
+            return `${name}: ${checked}`;
+          return `${name}: ${value}`;
+        })
+    );
     handleReset();
   };
 
-
-  return (
-    <ControlledForm
-      handleSubmit={handleSubmit}
-      ref={formRef}
-    />
-  );
+  return <ControlledForm handleSubmit={handleSubmit} ref={formRef} />;
 };
 
 export default Parent;

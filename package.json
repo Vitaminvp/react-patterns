@@ -6,6 +6,7 @@
     "react",
     "starter"
   ],
+  "homepage": "http://vitaminvp.github.io/react-patterns",
   "main": "src/index.js",
   "dependencies": {
     "classnames": "2.2.6",
@@ -16,13 +17,16 @@
     "react-scripts": "3.0.1"
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
