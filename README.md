@@ -2,7 +2,7 @@
 
 ## Kottans report
 
-
+[preview link](http://vitaminvp.github.io/react-patterns)
 
 ### React Patterns
 - Default component
