@@ -1,6 +1,8 @@
 # react-patterns 😺
 
-## My kottans report
+## Kottans report
+
+
 
 ### React Patterns
 - Default component
@@ -22,5 +24,10 @@
 - Controlled Components (submit form)
 - Uncontrolled Components (submit form)
 
-![video](./public/21.05.05.mov)
+![screenShot](./public/21.12.11.png)
+
+
+<video width="320" height="240" controls>
+  <source src="./public/video.mov" type="video/mp4">
+</video>
 
