@@ -26,5 +26,9 @@ export const bonuses = [
   {
     name: "24.uncontrolledComponents.js",
     title: "Uncontrolled Components (submit form)"
+  },
+  {
+    name: "25.componentInjection.js",
+    title: "Component injection"
   }
 ];
