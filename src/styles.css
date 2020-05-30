@@ -214,9 +214,9 @@ ol li {
 
 button:disabled,
 button[disabled]{
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
+    border: 1px solid #eae3e3;
+    background-color: #fffcfc;
+    color: #d8d5d5;
 }
 
 .form .container .group button[disabled],

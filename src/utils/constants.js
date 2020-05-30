@@ -30,5 +30,13 @@ export const bonuses = [
   {
     name: "25.componentInjection.js",
     title: "Component injection"
+  },
+  {
+    name: "26.forwardRef.js",
+    title: "React forwardRef"
+  },
+  {
+    name: "27.useImperativeHandle.js",
+    title: "React useImperativeHandle"
   }
 ];
