@@ -30,13 +30,28 @@ export const bonuses = [
   {
     name: "25.componentInjection.js",
     title: "Component injection"
-  },
+  }
+];
+
+export const hooks = [
   {
     name: "26.forwardRef.js",
-    title: "React forwardRef"
+    title: "React forwardRef hook"
   },
   {
     name: "27.useImperativeHandle.js",
-    title: "React useImperativeHandle"
+    title: "React useImperativeHandle hook"
+  },
+  {
+    name: "28.useCallback.js",
+    title: "React useCallback and useMemo hooks"
+  },
+  {
+    name: "29.useDimensions.js",
+    title: "React useDimensions hook"
+  },
+  {
+    name: "30.useInterval.js",
+    title: "React useInterval hook"
   }
 ];

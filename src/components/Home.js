@@ -1,24 +1,22 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { patterns, bonuses } from "../utils/constants";
+import { patterns, bonuses, hooks } from "../utils/constants";
 
 function Home() {
   const orderedList = list => (
     <ol>
-      {list.map(({ name, title }) => {
-        return (
-          <li key={name}>
-            <Link
-              to={{
-                pathname: `/${name}`,
-                state: { title }
-              }}
-            >
-              {title}
-            </Link>
-          </li>
-        );
-      })}
+      {list.map(({ name, title }) => (
+        <li key={name}>
+          <Link
+            to={{
+              pathname: `/${name}`,
+              state: { title }
+            }}
+          >
+            {title}
+          </Link>
+        </li>
+      ))}
     </ol>
   );
 
@@ -28,6 +26,8 @@ function Home() {
       {orderedList(patterns)}
       <h2>Bonuses</h2>
       {orderedList(bonuses)}
+      <h2>React hooks</h2>
+      {orderedList(hooks)}
     </Fragment>
   );
 }

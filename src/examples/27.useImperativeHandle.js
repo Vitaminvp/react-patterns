@@ -6,14 +6,28 @@ import React, {
 } from "react";
 import { Link } from "react-router-dom";
 
+const ProxyButton = ({ children, ...props }) => (
+  <button className="toggle-button" type="button" {...props}>
+    {children}
+  </button>
+);
+
 const MyInput = forwardRef(({ title, ...restProps }, ref) => {
-  const [val, setVal] = useState("");
   const inputRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     blur: () => {
-      document.title = val;
+      document.title = inputRef.current.value;
       inputRef.current.blur();
+    },
+    focus: () => {
+      inputRef.current.focus();
+    },
+    select: () => {
+      inputRef.current.select();
+    },
+    get input() {
+      return inputRef.current.value;
     }
   }));
 
@@ -22,24 +36,33 @@ const MyInput = forwardRef(({ title, ...restProps }, ref) => {
       <h1>
         <Link to="/">{title}</Link>
       </h1>
-      <input
-        ref={inputRef}
-        val={val}
-        onChange={e => setVal(e.target.value)}
-        {...restProps}
-      />
+      <input ref={inputRef} {...restProps} />
     </>
   );
 });
 
 const Parent = props => {
+  const [text, setText] = useState("");
   const ref = useRef(null);
-  const onBlur = () => {
-    console.log(ref.current);
-    ref.current.blur();
-  };
 
-  return <MyInput ref={ref} onBlur={onBlur} {...props} />;
+  const handleBlur = () => ref.current.blur();
+
+  const handleFocus = () => ref.current.focus();
+
+  const handleSelect = () => ref.current.select();
+
+  const handleGetValue = () => setText(ref.current.input);
+
+  return (
+    <>
+      <MyInput ref={ref} {...props} />
+      <ProxyButton onClick={handleBlur}>Blur</ProxyButton>
+      <ProxyButton onClick={handleFocus}>Focus</ProxyButton>
+      <ProxyButton onClick={handleSelect}>Select</ProxyButton>
+      <ProxyButton onClick={handleGetValue}>Write</ProxyButton>
+      <div style={{ textAlign: "center" }}>{text}</div>
+    </>
+  );
 };
 
 export default Parent;
