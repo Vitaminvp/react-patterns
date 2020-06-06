@@ -47,11 +47,15 @@ function Counter({ title }) {
       if (delay > 10) {
         setDelay(delay / 2);
       }
+      setDelay(1000);
     },
     isRunning ? 1000 : null
   );
 
-  const handleReset = () => setDelay(1000);
+  const handleReset = () => {
+    setDelay(1000);
+    setCount(0);
+  };
 
   return (
     <>

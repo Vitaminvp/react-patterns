@@ -8,6 +8,8 @@ const TYPES = {
   force: "force"
 };
 
+/********************* TOGGLE COMPONENTS *********************/
+
 const Toggle = ({
   children,
   title,

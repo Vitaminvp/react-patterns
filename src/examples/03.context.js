@@ -10,20 +10,27 @@ import Switch from "../components/Switch";
 
 const ToggleContext = React.createContext(null);
 
+/********************* TOGGLE COMPONENTS *********************/
+
 const Toggle = ({ title = "", children }) => {
   const [on, setOn] = useState(false);
+
   const toggle = useCallback(() => setOn(on => !on), [setOn]);
+
   const contextValues = useMemo(() => ({ on, title, toggle }), [
     on,
     title,
     toggle
   ]);
+
   return (
     <ToggleContext.Provider value={{ ...contextValues, toggle }}>
       {children}
     </ToggleContext.Provider>
   );
 };
+
+/********************* TOGGLE CHILDREN COMPONENTS *********************/
 
 const ToggleTitle = () => {
   const { title } = useContext(ToggleContext);
@@ -48,7 +55,6 @@ const ToggleButton = () => {
   const { on, toggle } = useContext(ToggleContext);
   return (
     <button
-      aria-label="custom-button"
       onClick={toggle}
       className="toggle-button"
     >
@@ -61,6 +67,8 @@ const ToggleSwitch = () => {
   const { on, toggle } = useContext(ToggleContext);
   return <Switch on={on} onClick={toggle} />;
 };
+
+/********************* PARENT COMPONENT *********************/
 
 const Parent = props => {
   return (

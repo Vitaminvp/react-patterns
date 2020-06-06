@@ -1,6 +1,8 @@
 import React, { useRef, Fragment, forwardRef } from "react";
 import { Link } from "react-router-dom";
 
+/********************* CONTROLLED FORM COMPONENTS *********************/
+
 const ControlledForm = forwardRef(
   ({ title, handleSubmit, handleReset }, ref) => {
     return (

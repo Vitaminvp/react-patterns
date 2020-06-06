@@ -2,6 +2,8 @@ import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Switch from "../components/Switch";
 
+/********************* TOGGLE COMPONENTS *********************/
+
 const Toggle = ({
   children,
   title,
@@ -33,29 +35,17 @@ const Toggle = ({
   });
 };
 
-Toggle.defaultProps = {
-  initialState: { on: false },
-  onReset: () => {},
-  title: "",
-  children: {},
-  onToggle: () => {},
-  stateReducer: (state, changes) => changes
-};
+/********************* PARENT COMPONENT *********************/
 
 const Parent = props => {
   const initialState = 0;
   const [timesClicked, setTimesClicked] = useState(initialState);
+
   const initialOn = true;
 
-  const onToggle = (...args) => {
-    setTimesClicked(timesClicked => ++timesClicked);
-    console.log(...args);
-  };
+  const onToggle = () => setTimesClicked(timesClicked => ++timesClicked);
 
-  const onReset = (...args) => {
-    setTimesClicked(initialState);
-    console.log(...args);
-  };
+  const onReset = () => setTimesClicked(initialState);
 
   const stateReducer = (state, changes) => {
     if (timesClicked >= 4) {
@@ -77,7 +67,9 @@ const Parent = props => {
           <h1>
             <Link to="/">{title}</Link>
           </h1>
+
           <h2>{on ? "The button is on" : "The button is off"}</h2>
+
           <Switch on={on} onClick={toggle} />
 
           {timesClicked > 5 ? (

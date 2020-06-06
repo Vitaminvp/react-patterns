@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import Switch from "../components/Switch";
 import { Link } from "react-router-dom";
 
+/********************* TOGGLE COMPONENTS *********************/
+
 const Toggle = props => {
   const [on, setOn] = useState(false);
 
   const isControlled = prop => props[prop] !== undefined;
+
   const getOn = () => (isControlled("on") ? props.on : on);
 
   const toggle = () => {
     if (isControlled("on")) {
-      props.onToggle(!getOn());
+      props.onToggle(!props.on);
     } else {
       setOn(!on);
     }
@@ -20,7 +23,6 @@ const Toggle = props => {
     <>
       <Switch on={getOn()} onClick={toggle} />
       <button
-        aria-label="custom-button"
         onClick={toggle}
         className="toggle-button"
       >
@@ -29,6 +31,8 @@ const Toggle = props => {
     </>
   );
 };
+
+/********************* PARENT COMPONENT *********************/
 
 const Parent = props => {
   const [bothOn, setBothOn] = useState(false);
@@ -39,6 +43,7 @@ const Parent = props => {
       <h1>
         <Link to="/">{props.title}</Link>
       </h1>
+
       <Toggle on={bothOn} onToggle={handleToggle} {...props} />
       <Toggle on={bothOn} onToggle={handleToggle} {...props} />
     </>
