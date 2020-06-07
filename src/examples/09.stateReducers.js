@@ -1,47 +1,52 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Switch from "../components/Switch";
 
 /********************* TOGGLE COMPONENTS *********************/
 
-const Toggle = ({
-  children,
-  title,
-  initialState,
-  onReset,
-  onToggle,
-  stateReducer
-}) => {
-  const [{ on }, setState] = useState(initialState);
-  const toggle = (...args) => {
-    onToggle(...args);
-    internalSetState(!on);
+class Toggle extends Component {
+  state = { on: this.props.initialOn };
+
+  internalSetState = on => {
+    const { stateReducer } = this.props;
+    this.setState(state => stateReducer(state, { on }));
   };
 
-  const reset = (...args) => {
-    internalSetState(initialState);
+  toggle = (...args) => {
+    const { onToggle } = this.props;
+    const { on } = this.state;
+
+    onToggle(...args);
+    this.internalSetState(!on);
+  };
+
+  reset = (...args) => {
+    const { initialState, onReset } = this.props;
+
+    this.internalSetState(initialState);
     onReset(...args);
   };
 
-  const internalSetState = changes => {
-    setState(state => stateReducer(state, changes));
-  };
-
-  return children({
-    on,
-    title,
-    reset,
-    toggle
-  });
-};
+  render() {
+    const { children, title } = this.props;
+    const { on } = this.state;
+    return children({
+      on,
+      title,
+      reset: this.reset,
+      toggle: this.toggle
+    });
+  }
+}
 
 /********************* PARENT COMPONENT *********************/
 
 const Parent = props => {
-  const initialState = 0;
-  const [timesClicked, setTimesClicked] = useState(initialState);
-
   const initialOn = true;
+
+  const initialState = 0;
+
+  const [timesClicked, setTimesClicked] = useState(initialState);
 
   const onToggle = () => setTimesClicked(timesClicked => ++timesClicked);
 

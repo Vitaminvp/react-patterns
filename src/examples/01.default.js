@@ -6,7 +6,9 @@ import classNames from "classnames";
 
 const Toggle = ({ title = "" }) => {
   const [on, setOn] = useState(false);
+
   const toggle = () => setOn(!on);
+
   const wrapperClassName = classNames("switch", {
     active: on
   });

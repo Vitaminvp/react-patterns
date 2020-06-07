@@ -3,13 +3,14 @@ export const patterns = [
   { name: "02.compound", title: "Compound components" },
   { name: "03.context.js", title: "React context" },
   { name: "04.renderProps", title: "Render Props" },
-  { name: "05.propsCollection", title: "Props Collections" },
-  { name: "06.propsGetter", title: "Prop Getters" },
-  { name: "07.stateInitializers", title: "State Initializers" },
-  { name: "08.stateReducers", title: "State Reducers" },
-  { name: "09.controlProps", title: "Control Props" },
-  { name: "10.providerPattern", title: "Provider Pattern" },
-  { name: "11.hoc", title: "Higher Order Components" }
+  { name: "05.renderChildren", title: "Render Children" },
+  { name: "06.propsCollection", title: "Props Collections" },
+  { name: "07.propsGetter", title: "Prop Getters" },
+  { name: "08.stateInitializers", title: "State Initializers" },
+  { name: "09.stateReducers", title: "State Reducers" },
+  { name: "10.controlProps", title: "Control Props" },
+  { name: "11.providerPattern", title: "Provider Pattern" },
+  { name: "12.hoc", title: "Higher Order Components" }
 ];
 
 export const bonuses = [

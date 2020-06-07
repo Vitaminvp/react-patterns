@@ -4,7 +4,7 @@ import Switch from "../components/Switch";
 
 /********************* TOGGLE COMPONENTS *********************/
 
-const Toggle = ({ title = "", children }) => {
+const Toggle = ({ title, children }) => {
   const [on, setOn] = useState(false);
   const toggle = () => setOn(!on);
 
@@ -15,19 +15,18 @@ const Toggle = ({ title = "", children }) => {
 
 /********************* STATIC COMPONENTS *********************/
 
-Toggle.Title = ({ title }) =>
-  title ? (
-    <h1>
-      <Link to="/">{title}</Link>
-    </h1>
-  ) : null;
+Toggle.Title = ({ title }) => (
+  <h1>
+    <Link to="/">{title}</Link>
+  </h1>
+);
 
 Toggle.On = ({ on, children }) => (on ? <h2>{children}</h2> : null);
 
 Toggle.Off = ({ on, children }) => (on ? null : <h2>{children}</h2>);
 
 Toggle.Button = ({ on, toggle }) => (
-  <button aria-label="custom-button" onClick={toggle} className="toggle-button">
+  <button onClick={toggle} className="toggle-button">
     {on ? "on" : "off"}
   </button>
 );
@@ -39,8 +38,8 @@ Toggle.Switch = ({ on, toggle }) => <Switch on={on} onClick={toggle} />;
 const Parent = props => (
   <Toggle {...props}>
     <Toggle.Title />
-    <Toggle.On> The button is on</Toggle.On>
     <Toggle.Off>The button is off</Toggle.Off>
+    <Toggle.On>The button is on</Toggle.On>
     <Toggle.Switch />
     <Toggle.Button />
   </Toggle>

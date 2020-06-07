@@ -1,26 +1,21 @@
-import React, { Component, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Switch from "../components/Switch";
 
 /********************* TOGGLE COMPONENTS *********************/
-class Toggle extends Component {
-  state = { on: false };
 
-  toggle = () => this.setState(({ on }) => ({ on: !on }));
+const Toggle = ({ children, title = "" }) => {
+  const [on, setOn] = useState(false);
+  const toggle = () => setOn(!on);
 
-  render() {
-    const { on } = this.state;
-    const { render, title } = this.props;
-
-    return render({ on, toggle: this.toggle, title });
-  }
-}
+  return children({ on, toggle, title });
+};
 
 /********************* PARENT COMPONENT *********************/
 
 const Parent = props => (
-  <Toggle
-    render={({ on, toggle, title }) => (
+  <Toggle {...props}>
+    {({ on, toggle, title }) => (
       <Fragment>
         <h1>
           <Link to="/">{title}</Link>
@@ -36,8 +31,7 @@ const Parent = props => (
         </button>
       </Fragment>
     )}
-    {...props}
-  />
+  </Toggle>
 );
 
 export default Parent;

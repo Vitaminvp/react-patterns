@@ -4,43 +4,46 @@ import Switch from "../components/Switch";
 
 /********************* TOGGLE COMPONENTS *********************/
 
-const Toggle = ({ children, title, initialOn, onReset }) => {
-  const [on, setOn] = useState(initialOn);
+const Toggle = ({ children, title }) => {
+  const [on, setOn] = useState(false);
 
   const toggle = () => setOn(!on);
 
-  const reset = () => {
-    setOn(initialOn);
-    onReset(initialOn);
+  const propsCollection = {
+    onClick: toggle,
+    "data-toggle": `Button is ${on}`
   };
 
-  return children({ on, title, reset, toggle });
+  return children({
+    on,
+    title,
+    propsCollection
+  });
 };
 
 /********************* PARENT COMPONENT *********************/
 
 const Parent = props => {
-  const initialOn = true;
-
-  const onReset = (...args) => console.log("onReset", ...args);
-
   return (
-    <Toggle initialOn={initialOn} onReset={onReset} {...props}>
-      {({ on, title, reset, toggle }) => (
+    <Toggle {...props}>
+      {({ on, title, propsCollection }) => (
         <Fragment>
-
           <h1>
             <Link to="/">{title}</Link>
           </h1>
-
           <h2>{on ? "The button is on" : "The button is off"}</h2>
 
-          <Switch on={on} onClick={toggle} />
+          <Switch on={on} {...propsCollection} />
 
-          <button className="toggle-button" onClick={reset}>
-            Reset
+          <button
+            aria-label="custom-button"
+            className="toggle-button"
+            {...propsCollection}
+              // but not so simple
+            onClick={() => alert("Ok")}
+          >
+            {on ? "on" : "off"}
           </button>
-
         </Fragment>
       )}
     </Toggle>
