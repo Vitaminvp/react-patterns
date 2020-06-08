@@ -229,3 +229,7 @@ button[disabled]{
   background: linear-gradient(to bottom, #9ea0a2 5%, #a095a8 100%);
   background: #9b9e8e;
 }
+
+.big-font {
+  font-size: xxx-large;
+}

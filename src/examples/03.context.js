@@ -10,6 +10,8 @@ import Switch from "../components/Switch";
 
 const ToggleContext = React.createContext(null);
 
+ToggleContext.displayName = 'MyToggleDisplayName';
+
 /********************* TOGGLE COMPONENTS *********************/
 
 const Toggle = ({ title = "", children }) => {

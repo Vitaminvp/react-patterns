@@ -17,6 +17,7 @@ class Toggle extends Component {
     const { on } = this.state;
 
     onToggle(...args);
+
     this.internalSetState(!on);
   };
 

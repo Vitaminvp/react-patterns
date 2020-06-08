@@ -39,7 +39,7 @@ const Parent = props => {
             aria-label="custom-button"
             className="toggle-button"
             {...propsCollection}
-              // but not so simple
+            // but not so simple
             onClick={() => alert("Ok")}
           >
             {on ? "on" : "off"}
