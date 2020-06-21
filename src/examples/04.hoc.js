@@ -31,14 +31,14 @@ const Toggle = ({ title, children }) => {
 const getDisplayName = WrappedComponent =>
   WrappedComponent.displayName || WrappedComponent.name || "ToggleChild";
 
-const withToggle = Component => {
+const withContext = Component => {
   const Wrapper = props => {
     const context = useContext(ToggleContext);
 
     return <Component {...context} {...props} />;
   };
 
-  Wrapper.displayName = `withHOC(${getDisplayName(Component)})`;
+  // Wrapper.displayName = `withHOC(${getDisplayName(Component)})`;
 
   hoistNonReactStatics(Wrapper, Component);
 
@@ -62,23 +62,23 @@ ToggleTitle.StaticMethod = () => (
   </span>
 );
 
-const ToggleTitleWithToggle = withToggle(ToggleTitle);
+const ToggleTitleWithToggle = withContext(ToggleTitle);
 
-const ToggleOn = withToggle(({ children, on }) =>
+const ToggleOn = withContext(({ children, on }) =>
   on ? <h2>{children}</h2> : null
 );
 
-const ToggleOff = withToggle(({ children, on }) =>
+const ToggleOff = withContext(({ children, on }) =>
   on ? null : <h2>{children}</h2>
 );
 
-const ToggleButton = withToggle(({ on, toggle }) => (
+const ToggleButton = withContext(({ on, toggle }) => (
   <button onClick={toggle} className="toggle-button">
     {on ? "on" : "off"}
   </button>
 ));
 
-const ToggleSwitch = withToggle(({ on, toggle }) => (
+const ToggleSwitch = withContext(({ on, toggle }) => (
   <Switch on={on} onClick={toggle} />
 ));
 

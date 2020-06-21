@@ -79,7 +79,7 @@ const Parent = props => {
           <Switch on={on} onClick={toggle} />
 
           {timesClicked > 5 ? (
-            <div className="click-count">You clicked to match!</div>
+            <div className="click-count">You clicked too much!</div>
           ) : (
             <div className="click-count">
               Click count: <strong>{timesClicked}</strong>
