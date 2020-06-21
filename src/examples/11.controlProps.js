@@ -44,8 +44,8 @@ const Parent = props => {
         <Link to="/">{props.title}</Link>
       </h1>
 
-      <Toggle on={bothOn} onToggle={handleToggle} {...props} />
-      <Toggle on={bothOn} onToggle={handleToggle} {...props} />
+      <Toggle on={bothOn} id="1" onToggle={handleToggle} {...props} />
+      <Toggle on={bothOn} id="2" onToggle={handleToggle} {...props} />
     </>
   );
 };
